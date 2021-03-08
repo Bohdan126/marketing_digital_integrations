@@ -1,0 +1,5 @@
+services:
+  marketing_digital_integrations.config_helper:
+    class: Drupal\marketing_digital_integrations\MarketingDigitalIntegrationsConfigHelper
+    arguments:
+      - '@config.factory'

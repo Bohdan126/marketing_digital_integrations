@@ -15,7 +15,7 @@ function marketing_digital_integrations_page_attachments(array &$page) {
   $is_admin_page = \Drupal::service('router.admin_context')->isAdminRoute();
   if (!$is_admin_page) {
     // Adding 3rd-party tracking code for not admin roles.
-    if (!\Drupal::currentUser()->hasPermission('administer site configuration')) {
+    if (!\Drupal::currentUser()->hasPermission('administer marketing digital integrations')) {
       marketing_digital_integrations_add_privy_code($page);
       marketing_digital_integrations_add_google_adwords_remarketing_tag($page);
       marketing_digital_integrations_add_facebook_pixel($page);
@@ -33,7 +33,7 @@ function marketing_digital_integrations_page_attachments(array &$page) {
  *   HTML head array.
  */
 function marketing_digital_integrations_add_privy_code(&$page) {
-  $config_values = marketing_digital_integrations_tracking_config_values('use_privy', 'privy_code');
+  $config_values = \Drupal::service('marketing_digital_integrations.config_helper')->getTrackingConfigValues('use_privy', 'privy_code');
 
   if (empty($config_values['use_value']) || empty($config_values['code_value'])) {
     return;
@@ -72,7 +72,7 @@ PRIVY;
  *   HTML head array.
  */
 function marketing_digital_integrations_add_google_adwords_remarketing_tag(&$page) {
-  $config_values = marketing_digital_integrations_tracking_config_values('use_gar', 'gar_code');
+  $config_values = \Drupal::service('marketing_digital_integrations.config_helper')->getTrackingConfigValues('use_gar', 'gar_code');
 
   if (empty($config_values['use_value']) || empty($config_values['code_value'])) {
     return;
@@ -118,7 +118,7 @@ GOOGLETAG;
  *   HTML head array.
  */
 function marketing_digital_integrations_add_facebook_pixel(&$page) {
-  $config_values = marketing_digital_integrations_tracking_config_values('use_facebook_pixel', 'facebook_pixel_code');
+  $config_values = \Drupal::service('marketing_digital_integrations.config_helper')->getTrackingConfigValues('use_facebook_pixel', 'facebook_pixel_code');
 
   if (empty($config_values['use_value']) || empty($config_values['code_value'])) {
     return;
@@ -164,7 +164,7 @@ FACEBOOKPIXEL;
  *   HTML head array.
  */
 function marketing_digital_integrations_add_hubspot_tag(&$page) {
-  $config_values = marketing_digital_integrations_tracking_config_values('use_hubspot', 'hubspot_code');
+  $config_values = \Drupal::service('marketing_digital_integrations.config_helper')->getTrackingConfigValues('use_hubspot', 'hubspot_code');
 
   if (empty($config_values['use_value']) || empty($config_values['code_value'])) {
     return;
@@ -191,7 +191,7 @@ function marketing_digital_integrations_add_hubspot_tag(&$page) {
  *   HTML head array.
  */
 function marketing_digital_integrations_add_klaviyo_tag(&$page) {
-  $config_values = marketing_digital_integrations_tracking_config_values('use_klaviyo', 'klaviyo_code');
+  $config_values = \Drupal::service('marketing_digital_integrations.config_helper')->getTrackingConfigValues('use_klaviyo', 'klaviyo_code');
 
   if (empty($config_values['use_value']) || empty($config_values['code_value'])) {
     return;
@@ -218,7 +218,7 @@ function marketing_digital_integrations_add_klaviyo_tag(&$page) {
  *   HTML head array.
  */
 function marketing_digital_integrations_add_adroll_tag(&$page) {
-  $config_values = marketing_digital_integrations_tracking_config_values('use_adroll', 'adroll_adv_id');
+  $config_values = \Drupal::service('marketing_digital_integrations.config_helper')->getTrackingConfigValues('use_adroll', 'adroll_adv_id');
   $adroll_adv_id = $config_values['code_value'];
   $adroll_pix_id = \Drupal::configFactory()->get('marketing_digital_integrations.affiliates_codes')->get('adroll_pix_id');
 
@@ -254,27 +254,5 @@ Adroll;
       '#value' => Markup::create($js),
     ],
     'mdi-adroll-tag-js',
-  ];
-}
-
-/**
- * Helper function to get configs values from Config Factory service.
- *
- * @param string $use_config
- *   Name of 'use' config.
- * @param string $code_config
- *   Name of 'code' config.
- *
- * @return array
- *   Array of 'use' and 'code' configs values.
- */
-function marketing_digital_integrations_tracking_config_values($use_config, $code_config) {
-  $config_factory = \Drupal::configFactory();
-  $use_value = $config_factory->get('marketing_digital_integrations.affiliates_codes')->get($use_config);
-  $code_value = $config_factory->get('marketing_digital_integrations.affiliates_codes')->get($code_config);
-
-  return [
-    'use_value' => $use_value,
-    'code_value' => $code_value,
   ];
 }
