@@ -1,0 +1,17 @@
+{
+    "name": "drupal/marketing_digital_integrations",
+    "description": "Marketing Digital Integrations",
+    "type": "drupal-module",
+    "homepage": "https://drupal.org/project/marketing_digital_integrations",
+    "authors": [
+        {
+            "name": "Bohdan Mykhalchuk (rollins)",
+            "homepage": "https://www.drupal.org/u/rollins",
+            "role": "Maintainer"
+        }
+    ],
+    "support": {
+        "issues": "https://drupal.org/project/issues/marketing_digital_integrations",
+        "source": "https://cgit.drupalcode.org/marketing_digital_integrations"
+    }
+}

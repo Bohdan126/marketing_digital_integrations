@@ -4,6 +4,6 @@ marketing_digital_integrations.settings:
     _form: '\Drupal\marketing_digital_integrations\Form\DigitalIntegrationsForm'
     _title: 'Marketing Digital Integrations'
   requirements:
-    _permission: 'administer site configuration'
+    _permission: 'administer marketing digital integrations'
   options:
     _admin_route: TRUE
