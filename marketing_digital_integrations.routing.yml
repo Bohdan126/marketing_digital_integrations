@@ -1,0 +1,9 @@
+marketing_digital_integrations.settings:
+  path: '/admin/config/services/digital_integrations'
+  defaults:
+    _form: '\Drupal\marketing_digital_integrations\Form\DigitalIntegrationsForm'
+    _title: 'Marketing Digital Integrations'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE

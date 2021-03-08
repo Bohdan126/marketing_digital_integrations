@@ -1,0 +1,5 @@
+marketing_digital_integrations.digital_integrations_settings_form:
+  title: 'Digital Integrations'
+  route_name: marketing_digital_integrations.settings
+  description: 'Configure the Digital Integrations.'
+  parent: system.admin_config_services

@@ -1,0 +1,6 @@
+name: 'Marketing Digital Integrations'
+type: module
+description: 'Adds 3rd-party tracking code for marketing.'
+core: 8.x
+package: Marketing
+configure: marketing_digital_integrations.settings
