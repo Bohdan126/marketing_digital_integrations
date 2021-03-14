@@ -3,3 +3,8 @@ services:
     class: Drupal\marketing_digital_integrations\MarketingDigitalIntegrationsConfigHelper
     arguments:
       - '@config.factory'
+
+  marketing_digital_integrations.tracking_code:
+    class: Drupal\marketing_digital_integrations\MarketingDigitalIntegrationsTrackingCode
+    arguments:
+      - '@marketing_digital_integrations.config_helper'
