@@ -3,3 +3,7 @@ services:
     class: Drupal\marketing_digital_integrations\MarketingDigitalIntegrationsConfigHelper
     arguments:
       - '@config.factory'
+
+  plugin.manager.marketing_cloud:
+    class: Drupal\marketing_digital_integrations\Plugin\MarketingCloudManager
+    parent: default_plugin_manager
